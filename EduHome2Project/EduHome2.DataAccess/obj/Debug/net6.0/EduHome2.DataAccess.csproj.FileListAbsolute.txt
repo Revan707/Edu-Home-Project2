@@ -1,0 +1,17 @@
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\bin\Debug\net6.0\EduHome2.DataAccess.deps.json
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\bin\Debug\net6.0\EduHome2.DataAccess.dll
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\bin\Debug\net6.0\EduHome2.DataAccess.pdb
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\bin\Debug\net6.0\EduHome2.Core.dll
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\bin\Debug\net6.0\EduHome2.Core.pdb
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.csproj.AssemblyReference.cache
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.AssemblyInfoInputs.cache
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.AssemblyInfo.cs
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.csproj.CopyComplete
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.dll
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\refint\EduHome2.DataAccess.dll
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.pdb
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\ref\EduHome2.DataAccess.dll
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\bin\Debug\net6.0\EduHome2.DataAccess.runtimeconfig.json
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.DataAccess\obj\Debug\net6.0\EduHome2.DataAccess.genruntimeconfig.cache
