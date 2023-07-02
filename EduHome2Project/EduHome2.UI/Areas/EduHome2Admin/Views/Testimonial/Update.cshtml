@@ -1,0 +1,57 @@
+﻿@using HomeEdu.UI.Areas.Admin.ViewModels.TestimoniaViewModel;
+@model TestimoniaVM
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/EduHome2Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 style="color:cornflowerblue">Update testimonial</h3>
+                <form method="post">
+                    @*default orarag get dir*@
+                    <div class="mb-3 row">
+                        <img style="width:200px;" src="@Model.ImagePath" />
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Name" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Name" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Surname" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Surname" />
+                            <span class="text-danger" asp-validation-for="Surname"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Description" class=" col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Description" />
+                            <span class="text-danger" asp-validation-for="Description"></span>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label asp-for="Position" class="col-md-2 col-form-label"></label>
+                        <div class="col-md-10">
+                            <input class="form-control" asp-for="Position" />
+                            <span class="text-danger" asp-validation-for="Position"></span>
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" asp-action="Update" class="btn btn-primary  ">Update</button>
+                    </div>
+                </form>
+                <a asp-area="Admin" asp-controller="testimonial" asp-action="Index" class="btn btn-light ">Return</a>
+
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
