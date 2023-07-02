@@ -9,4 +9,5 @@ public class Notice : IEntity
     public DateTime Date { get; set; }
     [Required, MaxLength(170)]
     public string Description { get; set; } = null!;
+
 }

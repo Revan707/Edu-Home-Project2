@@ -50,7 +50,27 @@ namespace EduHome2.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CourseCatagoryId");
+
                     b.ToTable("Courses");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.CourseCatagory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Catagory")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CourseCatagories");
                 });
 
             modelBuilder.Entity("EduHome2.Core.Entities.Notice", b =>
@@ -105,6 +125,22 @@ namespace EduHome2.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.Course", b =>
+                {
+                    b.HasOne("EduHome2.Core.Entities.CourseCatagory", "CourseCatagory")
+                        .WithMany("Courses")
+                        .HasForeignKey("CourseCatagoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CourseCatagory");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.CourseCatagory", b =>
+                {
+                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }

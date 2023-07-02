@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Slider>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using EduHome2.UI.ViewModels
+@using EduHome2.Core.Entities
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Slider table</h4>
+        <div class="table-responsive">
+            <a asp-area="EduHome2Admin" asp-controller="Slider" asp-action="Create" class="btn btn-success waves-effect waves-light">Create Slider</a>
+            <table class="table mb-0">
+
+                <thead>
+                    <tr>
+                        <th>ImageUrl</th>
+                        <th>Title</th>
+                        <th>SmallTitle</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var slider in Model)
+                    {
+                        <tr>
+                            <td><img style="width:250px" src="@slider.BackgroundImageUrl" /></td>
+                            <td>@slider.Title</td>
+                            <td>@slider.SmallTitle</td>
+                            <td>@slider.Description</td>
+                            <td class="buttons" style="display:flex;gap:5px" >
+                                <a asp-action="Detail" asp-route-id="@slider.Id" class="btn btn-warning" >Detail</a>
+                                <a asp-action="Update" asp-route-id="@slider.Id" class="btn btn-info" >Update</a>
+                                <a asp-action="Delete" asp-route-id="@slider.Id" class="btn btn-danger" >Delete</a>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+

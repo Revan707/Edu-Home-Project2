@@ -10,4 +10,5 @@ public class AppDbContext:DbContext
     public DbSet<Slider> Sliders { get; set; }
     public DbSet<Notice> Notices { get; set; }
     public DbSet<Course> Courses { get; set; }
+    public DbSet<CourseCatagory> CourseCatagories { get; set; }
 }

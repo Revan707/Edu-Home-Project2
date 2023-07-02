@@ -249,3 +249,5 @@ C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.UI\bin\Debug
 C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.UI\bin\Debug\net6.0\EduHome2.DataAccess.dll
 C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.UI\bin\Debug\net6.0\EduHome2.DataAccess.pdb
 C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.UI\bin\Debug\net6.0\EduHome2.Core.pdb
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.UI\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\User\OneDrive\Masaüstü\EduHome2\EduHome2Project\EduHome2.UI\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
