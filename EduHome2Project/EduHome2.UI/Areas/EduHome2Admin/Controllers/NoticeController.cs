@@ -18,17 +18,14 @@ public class NoticeController : Controller
         _context = context;
         _mapper = mapper;
     }
-    [Area("EduHome2Admin")]
     public async Task<IActionResult> Index()
     {
         return View(await _context.Notices.ToListAsync());
     }
-    [Area("EduHome2Admin")]
     public IActionResult Create()
     {
         return View();
     }
-    [Area("EduHome2Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(NoticePostVM noticePost)
     {
@@ -50,7 +47,6 @@ public class NoticeController : Controller
         }
         return View(noticedb);
     }
-    [Area("EduHome2Admin")]
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -65,7 +61,6 @@ public class NoticeController : Controller
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
-    [Area("EduHome2Admin")]
     public async Task<IActionResult> Update(int Id)
     {
         Notice? noticedb = await _context.Notices.FindAsync(Id);
@@ -76,7 +71,6 @@ public class NoticeController : Controller
         return View(noticedb);
 
     }
-    [Area("EduHome2Admin")]
     [ActionName("Update")]
     [HttpPost]
     public async Task<IActionResult> Update(int Id, Notice notice)

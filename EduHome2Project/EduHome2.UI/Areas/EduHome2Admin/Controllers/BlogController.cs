@@ -19,17 +19,14 @@ public class BlogController : Controller
         _context = context;
         _mapper = mapper;
     }
-    [Area("EduHome2Admin")]
     public async Task<IActionResult> Index()
     {
         return View(await _context.Blogs.ToListAsync());
     }
-    [Area("EduHome2Admin")]
     public IActionResult Create()
     {
         return View();
     }
-    [Area("EduHome2Admin")]
     [HttpPost]
     public async Task<IActionResult> Create(BlogPostVM blogPost)
     {
@@ -51,7 +48,6 @@ public class BlogController : Controller
         }
         return View(blogdb);
     }
-    [Area("EduHome2Admin")]
     [HttpPost]
     [ActionName("Delete")]
     [ValidateAntiForgeryToken]
@@ -66,7 +62,6 @@ public class BlogController : Controller
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
-    [Area("EduHome2Admin")]
     public async Task<IActionResult> Update(int Id)
     {
         Blog? blogdb = await _context.Blogs.FindAsync(Id);
@@ -77,7 +72,6 @@ public class BlogController : Controller
         return View(blogdb);
 
     }
-    [Area("EduHome2Admin")]
     [ActionName("Update")]
     [HttpPost]
     public async Task<IActionResult> Update(int Id, Blog blog)

@@ -4,82 +4,108 @@ using EduHome2.UI.Areas.EduHome2Admin.ViewModels.CourseViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace EduHome2.UI.Areas.EduHome2Admin.Controllers
+namespace EduHome2.UI.Areas.EduHome2Admin.Controllers;
+[Area("EduHome2Admin")]
+
+public class CourseController : Controller
 {
-    public class CourseController : Controller
+    private readonly AppDbContext _context;
+
+    public CourseController(AppDbContext context)
     {
-        private readonly AppDbContext _context;
+        _context = context;
+    }
+    public async Task<IActionResult> Index()
+    {
+        List<Course> courses = await _context.Courses.ToListAsync();
+        return View(courses);
 
-        public CourseController(AppDbContext context)
+    }
+    public async Task<IActionResult> Create()
+    {
+        ViewBag.Catagories = await _context.CourseCatagories.ToListAsync();
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(CoursePostVM coursePost, int CatagoryId)
+    {
+        if (!ModelState.IsValid)
         {
-            _context = context;
+            return BadRequest(ModelState);
         }
-        [Area("EduHome2Admin")]
-        public async Task<IActionResult> Index()
-        {
-            List<Course> courses = await _context.Courses.ToListAsync();
-            return View(courses);
 
+        var catagory = _context.CourseCatagories.Find(CatagoryId);
+
+        if (catagory is null)
+        {
+            return BadRequest();
         }
 
-        [Area("EduHome2Admin")]
-        public async Task<IActionResult> Create()
+        Course course = new();
+        course.Title = coursePost.Title;
+        course.Description = coursePost.Description;
+        course.ImagePath = coursePost.ImagePath;
+        course.CourseCatagoryId = CatagoryId;
+        await _context.AddAsync(course);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Index));
+    }
+    public async Task<IActionResult> Delete(int id)
+    {
+        var course = await _context.Courses.FindAsync(id);
+        if (course == null)
         {
-            ViewBag.Catagories = await _context.CourseCatagories.ToListAsync();
-            return View();
+            return NotFound();
         }
-
-        [Area("EduHome2Admin")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CoursePostVM coursePost, int CatagoryId)
+        return View(course);
+    }
+    [HttpPost]
+    [ActionName("Delete")]
+    [AutoValidateAntiforgeryToken]
+    public async Task<IActionResult> DeletePost(int id)
+    {
+        var course = await _context.Courses.FindAsync(id);
+        if (course == null)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var catagory = _context.CourseCatagories.Find(CatagoryId);
-
-            if (catagory is null)
-            {
-                return BadRequest();
-            }
-
-            Course course = new();
-            course.Title = coursePost.Title;
-            course.Description = coursePost.Description;
-            course.ImagePath = coursePost.ImagePath;
-            course.CourseCatagoryId = CatagoryId;
-            await _context.AddAsync(course);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction(nameof(Index));
+            return NotFound();
         }
-        [Area("EduHome2Admin")]
-        public async Task<IActionResult> Delete(int id)
+        _context.Courses.Remove(course);
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+    public async Task<IActionResult> Update(int Id)
+    {
+        Course? coursedb = await _context.Courses.FindAsync(Id);
+        if (coursedb == null)
         {
-            var course = await _context.Courses.FindAsync(id);
-            if (course == null)
-            {
-                return NotFound();
-            }
+            return NotFound();
+        }
+        return View(coursedb);
+
+    }
+    [ActionName("Update")]
+    [HttpPost]
+    public async Task<IActionResult> Update(int Id, Course course)
+    {
+        if (Id == course.Id)
+        {
+            return BadRequest();
+        }
+        if (!ModelState.IsValid)
+        {
             return View(course);
         }
-        [Area("EduHome2Admin")]
-        [HttpPost]
-        [ActionName("Delete")]
-        [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> DeletePost(int id)
+        Course? courseDb = await _context.Courses.AsNoTracking().FirstOrDefaultAsync(s => s.Id == Id);
+        if (courseDb == null)
         {
-            var course = await _context.Courses.FindAsync(id);
-            if (course == null)
-            {
-                return NotFound();
-            }
-            _context.Courses.Remove(course);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return NotFound();
         }
+        _context.Entry(course).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+
     }
 }

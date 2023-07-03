@@ -62,7 +62,6 @@ public class SliderController : Controller
         await _context.SaveChangesAsync();
         return  RedirectToAction(nameof(Index));
     }
-    [Area("EduHome2Admin")]
     public async Task<IActionResult> Update(int Id)
     {
         Slider? sliderdb = await _context.Sliders.FindAsync(Id);
@@ -73,7 +72,6 @@ public class SliderController : Controller
         return View(sliderdb);
 
     }
-    [Area("EduHome2Admin")]
     [ActionName("Update")]
     [HttpPost]
     public async Task<IActionResult> Update(int Id,Slider slider)

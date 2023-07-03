@@ -31,7 +31,7 @@
                                     <td>@course.Description</td>
                                     <td>@course.CourseCatagoryId</td>
                                     <td  class="buttons" style="display:flex;gap:5px">
-                                        <a type="button" class="btn btn-info waves-effect waves-light" asp-route-id="@course.Id">Update</a>
+                                        <a type="button" class="btn btn-info waves-effect waves-light" asp-route-id="@course.Id" asp-action="Update">Update</a>
                                         <a type="submit" class="btn btn-danger waves-effect waves-light" asp-route-id="@course.Id" asp-action="Delete">Delete</a>
                                     </td>
                                 </tr>
