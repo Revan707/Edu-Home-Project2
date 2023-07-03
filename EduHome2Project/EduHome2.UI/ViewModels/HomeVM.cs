@@ -10,5 +10,7 @@ namespace EduHome2.UI.ViewModels
         public IEnumerable<Course> Courses { get; set; } = null!;
         public IEnumerable<testimonial> Testimonials { get; set; } = null!;
         public IEnumerable<CourseCatagory> CourseCatagories { get; set; } = null!;
+        public IEnumerable<Event> Events { get; set; } = null!;
+        public IEnumerable<Blog> Blogs { get; set; } = null!;
     }
 }

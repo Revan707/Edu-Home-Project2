@@ -142,8 +142,8 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
+        <div class="row"> 
+                     <div class="col-lg-6">
                 <div class="single-event mb-35">
                     <div class="event-date">
                         <h3><a href="event-details.html">20 <span>June</span></a></h3>
@@ -213,7 +213,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 pt-5 pt-lg-0">
+                     <div class="col-lg-6 pt-5 pt-lg-0">
                 <div class="single-event mb-35">
                     <div class="event-date">
                         <h3><a href="event-details.html">12 <span>June</span></a></h3>
@@ -326,63 +326,28 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6">
+            @foreach (var blog in Model.Blogs)
+                {
+                   <div class="col-lg-4 col-md-6">
                 <div class="single-blog">
                     <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assetsf/img/blog/blog1.jpg" alt="blog"></a>
+                        <a href="blog-details.html"><img src="@blog.ImagePath" alt="blog"></a>
                         <div class="blog-hover">
                             <a href="blog-details.html"><i class="fa fa-link"></i></a>
                         </div>
                     </div>
                     <div class="blog-content">
                         <div class="blog-top">
-                            <p>By Alex  /  June 20, 2023  /  <i class="fa fa-comments-o"></i> 4</p>
+                            <p>@blog.Name  /  @blog.Date  /  <i class="fa fa-comments-o"></i> @blog.MessageBox</p>
                         </div>
                         <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
+                            <h2><a href="blog-details.html">@blog.Description </a></h2>
                             <a href="blog-details.html">read more</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assetsf/img/blog/blog2.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2023  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-blog mb-0">
-                    <div class="blog-img">
-                        <a href="blog-details.html"><img src="~/assetsf/img/blog/blog3.jpg" alt="blog"></a>
-                        <div class="blog-hover">
-                            <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                        </div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-top">
-                            <p>By Alex  /  June 20, 2023  /  <i class="fa fa-comments-o"></i> 4</p>
-                        </div>
-                        <div class="blog-bottom">
-                            <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                            <a href="blog-details.html">read more</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                }
         </div>
     </div>
 </div>
