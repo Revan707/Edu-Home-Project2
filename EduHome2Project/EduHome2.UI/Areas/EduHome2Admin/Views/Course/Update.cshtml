@@ -24,15 +24,15 @@
                 </div>
             </div>
             <div class="mb-3 row">
-                <label asp-for="CourseCatagoryId" for="example-email-input" class="col-md-2 col-form-label"> CourseCatagoryId</label>
+                <label asp-for="CourseCatagory.Catagory" for="example-email-input" class="col-md-2 col-form-label"> CourseCatagory</label>
                 <div class="col-md-10">
-                    <input asp-for="CourseCatagoryId" class="form-control" type="text">
-                    <span class="text-danger" asp-validation-for="CourseCatagoryId"></span>
+                    <input asp-for="CourseCatagory.Catagory" class="form-control" type="text">
+                    <span class="text-danger" asp-validation-for="CourseCatagory.Catagory"></span>
                 </div>
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                <button type="submit" class="btn btn-primary waves-effect waves-light" >Update</button>
             </div>
         </form>
     </div>

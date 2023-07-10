@@ -17,7 +17,7 @@ public class CourseController : Controller
     }
     public async Task<IActionResult> Index()
     {
-        List<Course> courses = await _context.Courses.ToListAsync();
+        List<Course> courses = await _context.Courses.Include(c=>c.CourseCatagory).ToListAsync();
         return View(courses);
 
     }

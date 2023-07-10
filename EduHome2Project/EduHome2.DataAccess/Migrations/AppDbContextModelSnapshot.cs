@@ -22,6 +22,22 @@ namespace EduHome2.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("EduHome2.Core.Entities.Assesment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AssesmentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Assesments");
+                });
+
             modelBuilder.Entity("EduHome2.Core.Entities.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -65,6 +81,9 @@ namespace EduHome2.DataAccess.Migrations
                     b.Property<int>("CourseCatagoryId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CourseDetailId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(120)
@@ -83,6 +102,9 @@ namespace EduHome2.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CourseCatagoryId");
+
+                    b.HasIndex("CourseDetailId")
+                        .IsUnique();
 
                     b.ToTable("Courses");
                 });
@@ -103,6 +125,58 @@ namespace EduHome2.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CourseCatagories");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.CourseDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AboutCourse")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("AssesmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Certification")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClassDuration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("CourseFee")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Duration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HowToApply")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("LanguageOptionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SkillId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Start")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("StudentCount")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssesmentId");
+
+                    b.HasIndex("LanguageOptionId");
+
+                    b.HasIndex("SkillId");
+
+                    b.ToTable("CourseDetails");
                 });
 
             modelBuilder.Entity("EduHome2.Core.Entities.Event", b =>
@@ -127,6 +201,19 @@ namespace EduHome2.DataAccess.Migrations
                     b.ToTable("Events");
                 });
 
+            modelBuilder.Entity("EduHome2.Core.Entities.Language", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Languages");
+                });
+
             modelBuilder.Entity("EduHome2.Core.Entities.Notice", b =>
                 {
                     b.Property<int>("Id")
@@ -146,6 +233,22 @@ namespace EduHome2.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Notices");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.SkillLevel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Skill")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SkillLevels");
                 });
 
             modelBuilder.Entity("EduHome2.Core.Entities.Slider", b =>
@@ -227,12 +330,52 @@ namespace EduHome2.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("EduHome2.Core.Entities.CourseDetail", "CourseDetail")
+                        .WithOne("Course")
+                        .HasForeignKey("EduHome2.Core.Entities.Course", "CourseDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CourseCatagory");
+
+                    b.Navigation("CourseDetail");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.CourseDetail", b =>
+                {
+                    b.HasOne("EduHome2.Core.Entities.Assesment", "Assesment")
+                        .WithMany()
+                        .HasForeignKey("AssesmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduHome2.Core.Entities.Language", "LanguageOption")
+                        .WithMany()
+                        .HasForeignKey("LanguageOptionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EduHome2.Core.Entities.SkillLevel", "Skill")
+                        .WithMany()
+                        .HasForeignKey("SkillId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Assesment");
+
+                    b.Navigation("LanguageOption");
+
+                    b.Navigation("Skill");
                 });
 
             modelBuilder.Entity("EduHome2.Core.Entities.CourseCatagory", b =>
                 {
                     b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("EduHome2.Core.Entities.CourseDetail", b =>
+                {
+                    b.Navigation("Course");
                 });
 #pragma warning restore 612, 618
         }

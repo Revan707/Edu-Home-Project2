@@ -26,6 +26,10 @@ public class HomeController : Controller
             CourseCatagories = await _context.CourseCatagories.ToListAsync(),
             Events = await _context.Events.ToListAsync(),
             Blogs = await _context.Blogs.ToListAsync(),
+            Assesments = await _context.Assesments.ToListAsync(),
+            CourseDetails = await _context.CourseDetails.ToListAsync(),
+            Languages = await _context.Languages.ToListAsync(),
+            SkillLevels = await _context.SkillLevels.ToListAsync(),
         };
         return View(homeVM);
     }

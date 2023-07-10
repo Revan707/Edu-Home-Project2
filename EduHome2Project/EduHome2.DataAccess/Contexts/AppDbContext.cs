@@ -16,4 +16,8 @@ public class AppDbContext:DbContext
     public DbSet<CourseCatagory> CourseCatagories { get; set; } = null!;
     public DbSet<Event> Events { get; set; } = null!;
     public DbSet<Blog> Blogs { get; set; } = null!;
+    public DbSet<Assesment> Assesments { get; set; } = null!;
+    public DbSet<CourseDetail> CourseDetails { get; set; } = null!;
+    public DbSet<Language> Languages { get; set; } = null!;
+    public DbSet<SkillLevel> SkillLevels { get; set; } = null!;
 }
