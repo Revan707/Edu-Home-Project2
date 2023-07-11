@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace EduHome2.Core.Entities;
-
+ 
 public class Course : IEntity
 {
     public int Id { get ; set ; }

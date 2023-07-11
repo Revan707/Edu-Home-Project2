@@ -1,11 +1,12 @@
 ﻿
 using EduHome2.Core.Entities;
 using HomeEdu.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EduHome2.DataAccess.Contexts;
 
-public class AppDbContext:DbContext
+public class AppDbContext:IdentityDbContext<AppUser>
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     public DbSet<Slider> Sliders { get; set; } = null!;
